@@ -82,7 +82,7 @@ final class ResendApiTransport extends AbstractApiTransport
     {
         $formattedAddresses = [];
         foreach ($addresses as $address) {
-            $formattedAddresses[] = $address->getEncodedAddress();
+            $formattedAddresses[] = $this->formatAddress($address);
         }
 
         if (\count($formattedAddresses) > 50) {
@@ -99,8 +99,8 @@ final class ResendApiTransport extends AbstractApiTransport
             'to' => $this->formatAddresses($this->getRecipients($email, $envelope)),
             'subject' => $email->getSubject(),
         ];
-        if ($attachements = $this->prepareAttachments($email)) {
-            $payload['attachments'] = $attachements;
+        if ($attachments = $this->prepareAttachments($email)) {
+            $payload['attachments'] = $attachments;
         }
         if ($emails = $email->getReplyTo()) {
             $payload['reply_to'] = current($this->formatAddresses($emails));
