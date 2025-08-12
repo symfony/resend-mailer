@@ -151,7 +151,7 @@ class ResendApiTransportTest extends TestCase
 
             $body = json_decode($options['body'], true);
             // to
-            $this->assertSame('kältetechnik@xn--kltetechnik-xyz-0kb.de', $body['to'][0]);
+            $this->assertSame('Kältetechnik Xyz <kältetechnik@xn--kltetechnik-xyz-0kb.de>', $body['to'][0]);
             // sender
             $this->assertStringContainsString('info@xn--kltetechnik-xyz-0kb.de', $body['from']);
             $this->assertStringContainsString('Kältetechnik Xyz', $body['from']);
