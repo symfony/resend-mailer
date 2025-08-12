@@ -82,7 +82,7 @@ final class ResendApiTransport extends AbstractApiTransport
     {
         $formattedAddresses = [];
         foreach ($addresses as $address) {
-            $formattedAddresses[] = $address->getEncodedAddress();
+            $formattedAddresses[] = $this->formatAddress($address);
         }
 
         if (\count($formattedAddresses) > 50) {
